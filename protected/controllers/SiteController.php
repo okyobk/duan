@@ -9,9 +9,9 @@ class SiteController extends Controller
 		$criteria = new CDbCriteria();
 		$criteria->select = array('link_image','id');
 	
-		$model = Image::model()->findAll($criteria);
+		$images = Image::model()->findAll($criteria);
 
-		$this->render('index', array('repost_rate' => $model));
+		$this->render('index', array('repost_rate' => $images));
 
 	}
 

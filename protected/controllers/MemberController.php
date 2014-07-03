@@ -3,10 +3,10 @@ class MemberController extends Controller
 {	
 	public function actionShowMember()
 	{
-		$model = User::model()->findAll(array('order' => 'id DESC'));
-		if($model !== NULL)
+		$users = User::model()->findAll(array('order' => 'id DESC'));
+		if($users !== NULL)
 		{
-			$this->render('showmember', array("list_member" => $model));
+			$this->render('showmember', array("list_member" => $users));
 		}
 		else {
 			$empty_member = "No member";

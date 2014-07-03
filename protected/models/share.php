@@ -9,9 +9,10 @@ class Share extends CActiveRecord
 	 * @var string $facebook_id
 	 */
 	public $id;
-	public $image;
+	public $id_image;
 	public $use_share;
 	public $use_revice;
+	public $link_image;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return CActiveRecord the static model class

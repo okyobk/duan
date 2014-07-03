@@ -6,75 +6,44 @@ class UserController extends Controller
 	
 	public function actionUser()
 	{
-		 $model=new User;
+		$model=new User;
 
         $username = Yii::app()->request->getParam('username');
         $paswd = Yii::app()->request->getParam('password');
 
         $model -> username =$username;
         $model -> password = $paswd;
-        $id=$model -> login();  
+        $model -> login();  
 
+        $criteria = new CDbCriteria();
+        $criteria->alias = 'tbl_share';
+        $criteria->condition = 'use_recive=:username';
+        $criteria->params = array('username'=>$username);
+        $criteria->select = array('id_image','use_share','tbl_image.link_image as link_image');
 
-        $model=new User;
+        $criteria->join = "INNER JOIN tbl_image ON tbl_image.id = tbl_share.id_image";
+         
 
-        $model ->name = Yii::app()->user->name;
-
-         $criteria = new CDbCriteria();
-         $criteria->condition = 'use_recive=:username';
-         $criteria->params = array('username'=>$username);
-         $criteria->select = array('image','use_share');
-
-
-         $model = share::model()->findAll($criteria);
-        $this->render('user', array('model' => $model));    
+        $user = share::model()->findAll($criteria);
+        $this->render('user', array('users' => $user));    
 	}
 
     public function actionDisplayshare()
     {
-         $model=new User;
  
         $session = new CHttpSession;
-            $session->open();
+        $session->open();
         $username=$session['usename'];
 
-        $model=new User;
-        $model ->name = Yii::app()->user->name;
+        $criteria = new CDbCriteria();
+        $criteria->alias = 'tbl_share';
+        $criteria->condition = 'use_recive=:username';
+        $criteria->params = array('username'=>$username);
+        $criteria->select = array('id_image','use_share','tbl_image.link_image as link_image');
 
-         $criteria = new CDbCriteria();
-         $criteria->condition = 'use_recive=:username';
-         $criteria->params = array('username'=>$username);
-         $criteria->select = array('image','use_share');
-
-
-         $model = share::model()->findAll($criteria);
-
-        $this->render('user', array('model' => $model));    
+        $criteria->join = "INNER JOIN tbl_image ON tbl_image.id = tbl_share.id_image";
+        $user = share::model()->findAll($criteria);
+        $this->render('displayshare', array('users' => $user));   
     }
-
-
-public function actionLogin() {
-     if (!Yii::app()->user->isGuest)
-         $this->redirect(Yii::app()->homeUrl);
- 
-     $model = new LoginForm('login');
- 
-     // if it is ajax validation request
-     if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
-         echo CActiveForm::validate($model);
-         Yii::app()->end();
-     }
- 
-     // collect user input data
-     if (isset($_POST['LoginForm'])) {
-         $model->attributes = $_POST['LoginForm'];
- 
-         if ($model->validate('login') && $model->login()) {
-             $this->redirect(Yii::app()->user->returnUrl);
-         }
-     }
- 
-     $this->render('login', array('model' => $model));
- }
 		
 }

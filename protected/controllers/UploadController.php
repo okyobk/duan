@@ -5,7 +5,7 @@ class UploadController extends Controller
 
 	public function actionCreate() {
 
-		$model = new Image;
+		$images = new Image;
  $images_path=realpath(Yii::app()->basePath . '/../images');
 
 if ((($_FILES["profilepic"]["type"] == "image/gif")
@@ -39,10 +39,10 @@ if ((($_FILES["profilepic"]["type"] == "image/gif")
       "$images_path" ."/". $_FILES["profilepic"]["name"]);	  
 	  $link = $_FILES["profilepic"]["name"];
 
-                $model->link_image = $link;
-                $id = $model->save();
+                $images->link_image = $link;
+                $images->save();
 
-                $this->render('create', array('model'=>$model));
+                $this->render('create', array('images'=>$images));
       }
     }
 

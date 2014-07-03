@@ -1,12 +1,8 @@
 
 <div class="windy-demo">
-    <!-- <ul id="wi-el" class="wi-container"> -->
-
 <?php
-// echo 'okyobk';
 foreach($list_photo as $photo)
 {
-	// $image=$photo->link_image;
 ?>
 	<li><img src = <?php echo Yii::app()->request->baseUrl.'/images/'.$photo->link_image ; ?> /> </br>
 
@@ -18,7 +14,7 @@ foreach($list_photo as $photo)
 					?>
 
 			<form action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/share/share?image='?>" method="POST">
-			<input type="text" value="<?php echo $photo->link_image;?>" style="" name="url"/>	
+			<input type="hidden" value="<?php echo $photo->id;?>" style="" name="id_image"/>	
 			<select name="namemember">
 			<?php foreach($list_member as $member){ ?>
 			<option value="<?php echo $member['username']; ?>"><?php echo $member['name']; ?>
@@ -27,12 +23,11 @@ foreach($list_photo as $photo)
 			</select>
 			<input type="submit" value="SHARE" style="height: 20px;width: 60px; margin-top: 5px;"/>		
 			</form>
-					<?php
+			<?php
 			}
 }
 
 ?>
-<!-- </ul> -->
 
 </div>
 <span class="share">

@@ -10,22 +10,21 @@ class ImageController extends Controller
 		{
 			$criteria = new CDbCriteria();
 
-			// echo $id;die;
-			$criteria->condition = 'link_image=:link_image';
-			$criteria->params = array('link_image'=>$id);
+			$criteria->condition = 'id=:id';
+			$criteria->params = array('id'=>$id);
 			$criteria->select = array('link_image','id');
-			$model = Image::model()->findAll($criteria);
+			$images = Image::model()->findAll($criteria);
 
 			$session = new CHttpSession;
 		 	$session->open();
 			if($session['fid']){
-				$member = User::model()->findAll(array('order' => 'id DESC'));
-				// print_r ($member);die;
+			$members = User::model()->findAll(array('order' => 'id DESC'));
+
 			}
 
-			if($model !== NULL)
-			{
-				$this->render('showimage', array("list_photo" => $model, "list_member" => $member));
+			if($images !== NULL)
+				{
+				$this->render('showimage', array("list_photo" => $images, "list_member" => $members));
 			}
 			else {
 				$empty_photo = "No photo";

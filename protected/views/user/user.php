@@ -9,10 +9,10 @@ if(!$session['usename'])
 
 }
 else{
-foreach($model as $id)
+foreach($users as $id)
 {
 ?>
-	<li><a href="<?php echo Yii::app()->request->baseUrl;?>/index.php/image/showimage?id=<?php echo $id->image;?>"><img src = <?php echo Yii::app()->request->baseUrl.'/images/'.$id->image; ?> width = "100" height = "100" /> 
+	<li><a href="<?php echo Yii::app()->request->baseUrl;?>/index.php/image/showimage?id=<?php echo $id->id_image;?>"><img src = <?php echo Yii::app()->request->baseUrl.'/images/'.$id->link_image; ?> width = "100" height = "100" /> 
 	</a>
 	</br>
 	<b>user share:<?php echo $id->use_share; ?></b>

@@ -55,8 +55,9 @@
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('site/index')),
 				array('label'=>'Name', 'url'=>array('member/showmember')),
+				array('label'=>'Account', 'url'=>array('/user/displayshare')),
 				array('label'=>'Login', 'url'=>array('/login/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Taikhoan', 'url'=>array('/user/displayshare')),
+				
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/logout/logout'), 'visible'=>!Yii::app()->user->isGuest),
 				
 				
