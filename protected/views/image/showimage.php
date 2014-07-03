@@ -13,7 +13,7 @@ foreach($list_photo as $photo)
 			if($session['fid']){
 					?>
 
-			<form action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/share/share?image='?>" method="POST">
+			<form action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/account/share?image='?>" method="POST">
 			<input type="hidden" value="<?php echo $photo->id;?>" style="" name="id_image"/>	
 			<select name="namemember">
 			<?php foreach($list_member as $member){ ?>
