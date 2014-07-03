@@ -1,6 +1,6 @@
 <?php
 
-class Image extends CActiveRecord
+class Share extends CActiveRecord
 {
 	/**
 	 * The followings are the available columns in table 'tbl_image':
@@ -9,8 +9,9 @@ class Image extends CActiveRecord
 	 * @var string $facebook_id
 	 */
 	public $id;
-	public $link_image;
-	public $facebook_id;
+	public $image;
+	public $use_share;
+	public $use_revice;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return CActiveRecord the static model class
@@ -25,19 +26,13 @@ class Image extends CActiveRecord
 	// 'maxSize'=>1024 * 1024 * 1, // 1MB
 	// 'tooLarge'=>'The file was larger than 1MB. Please upload a smaller file.',
 	// 'allowEmpty'=>1,
-	// 	)
-
-	public function rules(){
-		return array( array('uploadedFile', 'file', 'types'=>'jpg, gif, png'),
-                    array('image_name,image_type,image_size,image', 'safe'));
-	}
-	
+	// 	)	
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return '{{image}}';
+		return '{{share}}';
 	}
 	
 }

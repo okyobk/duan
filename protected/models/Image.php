@@ -10,7 +10,7 @@ class Image extends CActiveRecord
 	 */
 	public $id;
 	public $link_image;
-	public $facebook_id;
+	public $id_group;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return CActiveRecord the static model class

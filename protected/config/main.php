@@ -71,6 +71,13 @@ return array(
 		), 
 		), 
 		
+		'authManager' => array (
+   'class' => 'CDbAuthManager',
+   'connectionID' => 'db',
+   'itemTable' => 'tbl_authuser',
+   'assignmentTable' => 'tbl_authassignment',
+  ),
+		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

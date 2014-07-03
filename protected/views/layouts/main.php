@@ -54,11 +54,14 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('site/index')),
-				array('label'=>'Name', 'url'=>array('site/showmember')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'Name', 'url'=>array('member/showmember')),
+				array('label'=>'Login', 'url'=>array('/login/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Taikhoan', 'url'=>array('/user/displayshare')),
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/logout/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				
+				
 			),
-		)); ?>
+		));?>
 	</div><!-- mainmenu -->
 	
 	<?php $this->widget('zii.widgets.CBreadcrumbs', array(

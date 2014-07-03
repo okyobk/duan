@@ -1,5 +1,5 @@
 
-<form method="post" action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/site/user'?>" enctype="multipart/form-data">
+<form method="post" action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/user/user'?>" enctype="multipart/form-data">
 <center>
 <div class="row">
 	<b>username:</b>
