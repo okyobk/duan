@@ -1,12 +1,13 @@
 <?php
 
-class UserController extends Controller 
+class UserduanController extends Controller 
 {
 	
 	
-	public function actionUser()
+	public function actionUserduan()
 	{
-		$model=new User;
+		$model=new Userduan;
+
 
         $username = Yii::app()->request->getParam('username');
         $paswd = Yii::app()->request->getParam('password');
@@ -19,13 +20,13 @@ class UserController extends Controller
         $criteria->alias = 'tbl_share';
         $criteria->condition = 'use_recive=:username';
         $criteria->params = array('username'=>$username);
-        $criteria->select = array('id_image','use_share','tbl_image.link_image as link_image');
+        $criteria->select = array('id_image','use_share','tbl_imageduan.link_image as link_image');
 
-        $criteria->join = "INNER JOIN tbl_image ON tbl_image.id = tbl_share.id_image";
+        $criteria->join = "INNER JOIN tbl_imageduan ON tbl_imageduan.id = tbl_share.id_image";
          
 
         $user = share::model()->findAll($criteria);
-        $this->render('user', array('users' => $user));    
+        $this->render('userduan', array('users' => $user));    
 	}
 
     public function actionDisplayshare()
@@ -39,9 +40,9 @@ class UserController extends Controller
         $criteria->alias = 'tbl_share';
         $criteria->condition = 'use_recive=:username';
         $criteria->params = array('username'=>$username);
-        $criteria->select = array('id_image','use_share','tbl_image.link_image as link_image');
+        $criteria->select = array('id_image','use_share','tbl_imageduan.link_image as link_image');
 
-        $criteria->join = "INNER JOIN tbl_image ON tbl_image.id = tbl_share.id_image";
+        $criteria->join = "INNER JOIN tbl_imageduan ON tbl_imageduan.id = tbl_share.id_image";
         $user = share::model()->findAll($criteria);
         $this->render('displayshare', array('users' => $user));   
     }

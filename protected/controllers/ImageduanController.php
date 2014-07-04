@@ -1,6 +1,6 @@
 <?php
 
-class ImageController extends Controller 
+class ImageduanController extends Controller 
 {
 	
 	
@@ -13,18 +13,21 @@ class ImageController extends Controller
 			$criteria->condition = 'id=:id';
 			$criteria->params = array('id'=>$id);
 			$criteria->select = array('link_image','id');
-			$images = Image::model()->findAll($criteria);
+			$images = Imageduan::model()->findAll($criteria);
 
 			$session = new CHttpSession;
 		 	$session->open();
+		 	
 			if($session['fid']){
-			$members = User::model()->findAll(array('order' => 'id DESC'));
 
+			$members = Userduan::model()->findAll(array('order' => 'id DESC'));
+			$members2 = User::model()->findAll(array('order' => 'id DESC'));
 			}
 
 			if($images !== NULL)
 				{
-				$this->render('showimage', array("list_photo" => $images, "list_member" => $members));
+				$this->render('showimage', array("list_photo" => $images, "list_member" => $members, "list_member2" => $members2));
+				// echo "okyobk"; die;
 			}
 			else {
 				$empty_photo = "No photo";

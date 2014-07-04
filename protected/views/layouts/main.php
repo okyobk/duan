@@ -55,10 +55,12 @@
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('site/index')),
 				array('label'=>'Name', 'url'=>array('member/showmember')),
-				array('label'=>'Account', 'url'=>array('/user/displayshare')),
-				array('label'=>'Login', 'url'=>array('/account/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Account', 'url'=>array('/userduan/displayshare')),
+				array('label'=>'Login', 'url'=>array('/account/login'), 'visible'=>$visible_guest),
+				array('label'=>'Login with Facebook', 'url'=>array('/account/loginfacebook'), 'visible'=>$visible_guest),
+
 				
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/account/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/account/logout'), 'visible'=>$visible_mb),
 				
 				
 			),

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 03, 2014 at 08:52 AM
+-- Generation Time: Jul 04, 2014 at 07:22 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -75,11 +75,39 @@ CREATE TABLE IF NOT EXISTS `tbl_clientauths` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_image` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `link_image` varchar(255) NOT NULL,
+  `facebook_id` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=228 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_imageduan`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_imageduan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `link_image` varchar(500) NOT NULL,
   `id_group` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_review`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_review` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `image_id` int(10) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `rating` int(10) NOT NULL,
+  `date_rating` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 -- --------------------------------------------------------
 
@@ -93,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `tbl_share` (
   `use_share` varchar(100) NOT NULL,
   `use_recive` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 -- --------------------------------------------------------
 
@@ -102,6 +130,22 @@ CREATE TABLE IF NOT EXISTS `tbl_share` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_user` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `access_token` text NOT NULL,
+  `facebook_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `facebook_id` varchar(255) NOT NULL,
+  `facebook_link` varchar(255) NOT NULL,
+  `avatar` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_userduan`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_userduan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,

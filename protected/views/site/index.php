@@ -8,7 +8,7 @@
     <input type="hidden" value="No" name="flag"/>
 <?php  echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?></br>
 
-	<a href="<?php echo Yii::app()->request->baseUrl;?>/index.php/user/displayshare"> infomation of share 
+	<a href="<?php echo Yii::app()->request->baseUrl;?>/index.php/userduan/displayshare"> infomation of share 
 		   	</a>
 </form>
   
@@ -21,7 +21,7 @@
 	   	?>
 	   	
 		   <li>
-		   	<a href="<?php echo Yii::app()->request->baseUrl;?>/index.php/image/showimage?id=<?php echo $img->id;?>"><img src = <?php echo Yii::app()->request->baseUrl.'/images/'.$img->link_image ; ?> width = "100" height = "100"/> 
+		   	<a href="<?php echo Yii::app()->request->baseUrl;?>/index.php/imageduan/showimage?id=<?php echo $img->id;?>"><img src = <?php echo Yii::app()->request->baseUrl.'/images/'.$img->link_image ; ?> width = "100" height = "100"/> 
 		   	</a>
 		   </li>
 		   

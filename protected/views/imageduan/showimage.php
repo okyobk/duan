@@ -12,12 +12,26 @@ foreach($list_photo as $photo)
 		 	$session->open();
 			if($session['fid']){
 					?>
-
+			<b>user for website:</b>
 			<form action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/account/share?image='?>" method="POST">
 			<input type="hidden" value="<?php echo $photo->id;?>" style="" name="id_image"/>	
 			<select name="namemember">
-			<?php foreach($list_member as $member){ ?>
+			
+			<?php foreach($list_member as $member ){ ?>
 			<option value="<?php echo $member['username']; ?>"><?php echo $member['name']; ?>
+			</option>	
+			<?php } ?>
+			</select>
+			<input type="submit" value="SHARE" style="height: 20px;width: 60px; margin-top: 5px;"/>		
+			</form>
+			
+
+			<b>user for facebook:</b>
+			<form action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/account/share?image='?>" method="POST">
+			<input type="hidden" value="<?php echo $photo->id;?>" style="" name="id_image"/>	
+			<select name="namemember">
+			<?php foreach($list_member2 as $member ){ ?>
+			<option value="<?php echo $member['facebook_name']; ?>"><?php echo $member['facebook_name']; ?>
 			</option>	
 			<?php } ?>
 			</select>

@@ -15,8 +15,8 @@ class UserIdentity extends CUserIdentity
      }
      
      public function authenticate() {
-        /* Sau khi có thể gửi mail chỉ cho phép login nếu status > 0 */
- 	 	$user = User::model()->find('username=:username ', array(':username'=>$this->username));
+        // echo "okyo";die;
+ 	 	$user = Userduan::model()->find('username=:username ', array(':username'=>$this->username));
          if ($user === null) {
              $this->errorCode = self::ERROR_USERNAME_INVALID;
          } else {

@@ -5,7 +5,7 @@ class UploadController extends Controller
 
 	public function actionCreate() {
 
-		$images = new Image;
+		$images = new Imageduan;
  $images_path=realpath(Yii::app()->basePath . '/../images');
 
 if ((($_FILES["profilepic"]["type"] == "image/gif")

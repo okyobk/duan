@@ -1,6 +1,8 @@
 
 <ul class="list_member">
+
 <?php
+echo Yii::app()->params['defaultLanguage'];
 foreach($list_member as $member)
 {
 ?>	<li>

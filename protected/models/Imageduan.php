@@ -1,6 +1,6 @@
 <?php
 
-class Image extends CActiveRecord
+class Imageduan extends CActiveRecord
 {
 	/**
 	 * The followings are the available columns in table 'tbl_image':
@@ -10,7 +10,7 @@ class Image extends CActiveRecord
 	 */
 	public $id;
 	public $link_image;
-	public $facebook_id;
+	public $id_group;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return CActiveRecord the static model class
@@ -20,12 +20,20 @@ class Image extends CActiveRecord
 		return parent::model($className);
 	}
 
+	// public function rules()
+ //    {
+ //        return array(
+ //            array('image', 'file', 'types'=>'jpg, gif, png'),
+ //        );
+ //    }
+	// return array( array('uploadedFile', 'file', 'types'=>'jpg, gif, png'),
+ //                    array('image_name,image_type,image_size,image', 'safe'));
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return '{{image}}';
+		return '{{imageduan}}';
 	}
 	
 }

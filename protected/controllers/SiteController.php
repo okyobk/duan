@@ -9,7 +9,7 @@ class SiteController extends Controller
 		$criteria = new CDbCriteria();
 		$criteria->select = array('link_image','id');
 	
-		$images = Image::model()->findAll($criteria);
+		$images = Imageduan::model()->findAll($criteria);
 
 		$this->render('index', array('repost_rate' => $images));
 

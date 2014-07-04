@@ -70,7 +70,14 @@ return array(
 		      ),
 		), 
 		), 
-		
+
+
+
+		'sourceLanguage'=>'00',
+		'language'=>'en',
+
+
+
 		'authManager' => array (
    'class' => 'CDbAuthManager',
    'connectionID' => 'db',
