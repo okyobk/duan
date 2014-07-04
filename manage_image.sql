@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 04, 2014 at 07:22 AM
+-- Generation Time: Jul 04, 2014 at 07:36 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -71,19 +71,6 @@ CREATE TABLE IF NOT EXISTS `tbl_clientauths` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_image`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_image` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `link_image` varchar(255) NOT NULL,
-  `facebook_id` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=228 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_imageduan`
 --
 
@@ -97,21 +84,6 @@ CREATE TABLE IF NOT EXISTS `tbl_imageduan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_review`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_review` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `image_id` int(10) NOT NULL,
-  `user_id` varchar(255) NOT NULL,
-  `rating` int(10) NOT NULL,
-  `date_rating` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_share`
 --
 
@@ -121,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `tbl_share` (
   `use_share` varchar(100) NOT NULL,
   `use_recive` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 -- --------------------------------------------------------
 
