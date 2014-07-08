@@ -16,6 +16,20 @@ class UserduanController extends Controller
         $model -> password = $paswd;
         $model -> login();  
 
+
+        $session = new CHttpSession;
+        $session->open();
+        
+        $criteria = new CDbCriteria();
+        $criteria->condition = 'username=:username';
+        $criteria->params = array('username'=>$username);
+        $criteria->select = array('language');
+        $lang = Userduan::model()->findAll($criteria);
+        foreach ($lang as $language => $value) {
+            $session['language'] = $value->language;
+        }
+
+
         $criteria = new CDbCriteria();
         $criteria->alias = 'tbl_share';
         $criteria->condition = 'use_recive=:username';

@@ -8,7 +8,7 @@
     <input type="hidden" value="No" name="flag"/>
 <?php  echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?></br>
 
-	<a href="<?php echo Yii::app()->request->baseUrl;?>/index.php/userduan/displayshare"> infomation of share 
+	<a href="<?php echo Yii::app()->request->baseUrl;?>/index.php/userduan/displayshare"> <?php echo Yii::t('strings','share infomation'); ?> 
 		   	</a>
 </form>
   

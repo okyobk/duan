@@ -15,7 +15,6 @@ class UserIdentity extends CUserIdentity
      }
      
      public function authenticate() {
-        // echo "okyo";die;
  	 	$user = Userduan::model()->find('username=:username ', array(':username'=>$this->username));
          if ($user === null) {
              $this->errorCode = self::ERROR_USERNAME_INVALID;
@@ -32,14 +31,12 @@ class UserIdentity extends CUserIdentity
 
 				$role = $authUser->name;
 				$auth = Yii::app()->authManager;
-                 // echo 'okyo';
 
 				if (!$auth->isAssigned($role, $this->id)) {
 					if ($auth->assign($role, $this->id)) {
 						Yii::app()->authManager->save();
 					}
 				}
-				// echo 'okyo';die;
                 $session = new CHttpSession;
                 $session->open();
 
@@ -47,11 +44,8 @@ class UserIdentity extends CUserIdentity
                 $session['usename']=$user->username;
 
                 $this->setState('username', $user->username);
-                // $this->setState($session['fid'], $user->id);
                 $this->setState('name', $user->name);
                 $this->errorCode = self::ERROR_NONE;
-
-                // echo 'okyo';
              }
          }
          return !$this->errorCode;

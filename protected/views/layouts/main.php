@@ -38,6 +38,18 @@
 	<div id="header">
 		<div id="logo"><?php echo CHtml::encode('Photobrucket'); ?></div>
 	</div><!-- header -->
+	<div  id="language-selector" style="float:right; margin:5px;">
+    <?php
+
+    $session = new CHttpSession;
+        $session->open();
+        if(Yii::app()->session['language']){
+    	unset(Yii::app()->session['language']);
+		$session->close();
+	}
+        $this->widget('application.components.widgets.LanguageSelector');
+    ?>
+</div>
 	<div id="mainmenu">
 		<?php 
 		  $visible_guest = 1;
@@ -53,14 +65,14 @@
 		?>
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('site/index')),
-				array('label'=>'Name', 'url'=>array('member/showmember')),
-				array('label'=>'Account', 'url'=>array('/userduan/displayshare')),
-				array('label'=>'Login', 'url'=>array('/account/login'), 'visible'=>$visible_guest),
-				array('label'=>'Login with Facebook', 'url'=>array('/account/loginfacebook'), 'visible'=>$visible_guest),
+				array('label'=>Yii::t('strings','Home'), 'url'=>array('site/index')),
+				array('label'=>Yii::t('strings','Name'), 'url'=>array('member/showmember')),
+				array('label'=>Yii::t('strings','Account'), 'url'=>array('/userduan/displayshare')),
+				array('label'=>Yii::t('strings','Login'), 'url'=>array('/account/login'), 'visible'=>$visible_guest),
+				array('label'=>Yii::t('strings','Login with Facebook'), 'url'=>array('/account/loginfacebook'), 'visible'=>$visible_guest),
 
 				
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/account/logout'), 'visible'=>$visible_mb),
+				array('label'=>Yii::t('strings','Logout').'('.Yii::app()->user->name.')', 'url'=>array('/account/logout'), 'visible'=>$visible_mb),
 				
 				
 			),

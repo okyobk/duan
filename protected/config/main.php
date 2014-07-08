@@ -73,8 +73,14 @@ return array(
 
 
 
-		'sourceLanguage'=>'00',
-		'language'=>'en',
+		'sourceLanguage'=>'en',
+
+    'components'=>array(
+        'request'=>array(
+            'enableCookieValidation'=>true,
+            'enableCsrfValidation'=>true,
+        ),
+    ),
 
 
 
@@ -100,8 +106,17 @@ return array(
 		),
 		
 	),
+'behaviors'=>array(
+        'onBeginRequest' => array(
+            'class' => 'application.components.behaviors.BeginRequest'
+        ),
+    ),
 
-	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
-	'params'=>require(dirname(__FILE__).'/params.php')
+	'params'=>array(
+		'adminEmail'=>'webmaster@example.com',
+		'languages'=>array('fr'=>'france', 'en'=>'English', 'jp'=>'Japan'),
+		'appId' => '590413001078574',
+'secret' => '68369cce79c4f4c3e82f70f2675ef41f',
+'limit_rate' => 8
+	),
 );

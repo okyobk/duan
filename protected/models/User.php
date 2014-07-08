@@ -15,6 +15,7 @@ class User extends CActiveRecord
 	public $facebook_id;
 	public $facebook_link;
 	public $avatar;
+	public $language;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return CActiveRecord the static model class

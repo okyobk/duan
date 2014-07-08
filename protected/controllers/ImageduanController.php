@@ -27,7 +27,6 @@ class ImageduanController extends Controller
 			if($images !== NULL)
 				{
 				$this->render('showimage', array("list_photo" => $images, "list_member" => $members, "list_member2" => $members2));
-				// echo "okyobk"; die;
 			}
 			else {
 				$empty_photo = "No photo";

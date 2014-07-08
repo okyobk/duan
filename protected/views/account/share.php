@@ -1,4 +1,4 @@
 <?php
-echo 'share thanh cong';
+echo 'share successfully';
 
 ?>

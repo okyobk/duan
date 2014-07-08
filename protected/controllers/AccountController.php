@@ -13,6 +13,28 @@ class AccountController extends Controller
 	{
 		$session = new CHttpSession;
 		$session->open();
+
+		$user = new Userduan;
+
+		if(!$session['bolen']){
+		Yii::app()->db->createCommand()->update(
+  		'tbl_userduan',
+  		array('language'=>$session['lang']),
+  		'username = :username',
+  		array(':username'=>$session['usename'])
+			);
+		}
+		else{
+			Yii::app()->db->createCommand()->update(
+  		'tbl_user',
+  		array('language'=>$session['lang']),
+  		'facebook_name = :facebook_name',
+  		array(':facebook_name'=>$session['usename'])
+			);
+
+		}
+
+
 		unset(Yii::app()->session['fid']);
 		Yii::app()->session->destroy();
 		$session->close();
@@ -62,6 +84,7 @@ class AccountController extends Controller
 	{	
 			$facebook = $this->getFaceBook();
 			$user = $facebook->getUser();
+			// echo $user;die;
 			if($user)
 			{
 				$model_user = new User;
@@ -71,6 +94,10 @@ class AccountController extends Controller
 				$info = $facebook->api('/me');
 				Yii::app()->session['fusername'] = $info['name'];
 				Yii::app()->session['fid'] = $user;
+
+
+
+
 				if($check === null)
 				{
 					$model_user->facebook_id = $info['id'];
@@ -85,8 +112,23 @@ class AccountController extends Controller
 					$session=new CHttpSession;
 					$session->open();
 					$session['usename']=$info['name'];
-					$session['fid']=$info['id'];				
+					$session['fid']=$info['id'];	
+					$session['bolen']='1';
+
+        
+			        $criteria = new CDbCriteria();
+        			$criteria->condition = 'facebook_name=:facebook_name';
+        			$criteria->params = array('facebook_name'=>$info['name']);
+        			$criteria->select = array('language');
+        			$lang = User::model()->findAll($criteria);
+        			foreach ($lang as $language => $value) {
+            			$session['language'] = $value->language;
+        				}
+
+
 					$this->redirect(Yii::app()->homeUrl);
+
+
 				} 
 			} 
 			else 

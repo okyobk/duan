@@ -15,6 +15,7 @@ class Userduan extends CActiveRecord
 	public $password;
 	public $name;
 	public $userGroup;
+	public $language;
 
 	private $_identity;	
 	// public $avatar;

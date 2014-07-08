@@ -1,10 +1,10 @@
 
-<form method="post" action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/user/user'?>" enctype="multipart/form-data">
+<form method="post" action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/userduan/userduan'?>" enctype="multipart/form-data">
 <center>
 <div class="row">
-	<b>username:</b>
+	<b><?php echo Yii::t('strings','username'); ?>:</b>
     <input type="text" name = "username"></br></br>
-    <b>passwrod:</b>
+    <b><?php echo Yii::t('strings','password');?>:</b>
     <input type="password" name = "password">
 </div>
 </center>
