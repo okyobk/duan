@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2014 at 05:47 AM
+-- Generation Time: Jul 09, 2014 at 01:34 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `tbl_share` (
   `use_share` varchar(100) NOT NULL,
   `use_recive` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 -- --------------------------------------------------------
 
@@ -102,23 +102,6 @@ CREATE TABLE IF NOT EXISTS `tbl_share` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_user` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `access_token` text NOT NULL,
-  `facebook_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `facebook_id` varchar(255) NOT NULL,
-  `facebook_link` varchar(255) NOT NULL,
-  `avatar` varchar(255) NOT NULL,
-  `language` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_userduan`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_userduan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
@@ -126,4 +109,4 @@ CREATE TABLE IF NOT EXISTS `tbl_userduan` (
   `userGroup` varchar(20) NOT NULL,
   `language` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;

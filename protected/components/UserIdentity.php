@@ -15,7 +15,7 @@ class UserIdentity extends CUserIdentity
      }
      
      public function authenticate() {
- 	 	$user = Userduan::model()->find('username=:username ', array(':username'=>$this->username));
+ 	 	$user = User::model()->find('username=:username ', array(':username'=>$this->username));
          if ($user === null) {
              $this->errorCode = self::ERROR_USERNAME_INVALID;
          } else {

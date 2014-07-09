@@ -10,12 +10,15 @@ class User extends CActiveRecord
 	 * @var string $facebook_link
 	 * @var string avatar
 	 */
-	public $facebook_name;
-	public $access_token;
-	public $facebook_id;
-	public $facebook_link;
-	public $avatar;
+	public $id;
+	public $username;
+	public $password;
+	public $name;
+	public $userGroup;
 	public $language;
+
+	private $_identity;	
+	// public $avatar;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return CActiveRecord the static model class
@@ -32,5 +35,63 @@ class User extends CActiveRecord
 	{
 		return '{{user}}';
 	}
+
+
+// public function authenticate($attribute, $params) {
+//          if (!$this->hasErrors()) {
+//              $this->_identity = new UserIdentity($this->email, $this->password);
+//              if (!$this->_identity->authenticate())
+//                  $this->addError('password', Yii::t('default', 'Incorrect email or password !'));
+//          }
+//      }
+
+     public function login() {
+         if ($this->_identity === null) {
+             $this->_identity = new UserIdentity($this->username, $this->password);
+             $this->_identity->authenticate();
+         }
+         if ($this->_identity->errorCode === UserIdentity::ERROR_NONE) {
+         	
+		 		Yii::app()->user->login($this->_identity, 0);	
+			
+             return true;
+         }
+         else
+             return false;
+     }
+
+
+
+
+
+
+// public function hashPassword($password, $salt)
+// {
+//     return md5($salt.$password);
+// }
+        
+// // password validation
+// public function validatePassword($password)
+// {
+//     return $this->hashPassword($password,$this->salt)===$this->password;
+// }
+        
+// //generate salt
+// public function generateSalt()
+// {
+//     return uniqid('',true);
+// }
+        
+// public function beforeValidate()
+// {
+//     $this->salt = $this->generateSalt();
+//     return parent::beforeValidate();
+// }
+        
+// public function beforeSave()
+// {
+//     $this->password = $this->hashPassword($this->password, $this->salt);
+//     return parent::beforeSave();
+// }
 	
 }

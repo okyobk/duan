@@ -20,13 +20,13 @@ class ImageduanController extends Controller
 		 	
 			if($session['fid']){
 
-			$members = Userduan::model()->findAll(array('order' => 'id DESC'));
-			$members2 = User::model()->findAll(array('order' => 'id DESC'));
+			// $members = Userduan::model()->findAll(array('order' => 'id DESC'));
+			$members = User::model()->findAll(array('order' => 'id DESC'));
 			}
 
 			if($images !== NULL)
 				{
-				$this->render('showimage', array("list_photo" => $images, "list_member" => $members, "list_member2" => $members2));
+				$this->render('showimage', array("list_photo" => $images, "list_member" => $members));
 			}
 			else {
 				$empty_photo = "No photo";

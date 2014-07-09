@@ -3,7 +3,7 @@ class MemberController extends Controller
 {	
 	public function actionShowMember()
 	{
-		$users = Userduan::model()->findAll(array('order' => 'id DESC'));
+		$users = User::model()->findAll(array('order' => 'id DESC'));
 		if($users !== NULL)
 		{
 			$this->render('showmember', array("list_member" => $users));

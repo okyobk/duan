@@ -14,27 +14,15 @@ class AccountController extends Controller
 		$session = new CHttpSession;
 		$session->open();
 
-		$user = new Userduan;
+		$user = new User;
 
-		if(!$session['bolen']){
 		Yii::app()->db->createCommand()->update(
-  		'tbl_userduan',
+  		'tbl_user',
   		array('language'=>$session['lang']),
   		'username = :username',
   		array(':username'=>$session['usename'])
 			);
-		}
-		else{
-			Yii::app()->db->createCommand()->update(
-  		'tbl_user',
-  		array('language'=>$session['lang']),
-  		'facebook_name = :facebook_name',
-  		array(':facebook_name'=>$session['usename'])
-			);
-
-		}
-
-
+		
 		unset(Yii::app()->session['fid']);
 		Yii::app()->session->destroy();
 		$session->close();
@@ -84,26 +72,27 @@ class AccountController extends Controller
 	{	
 			$facebook = $this->getFaceBook();
 			$user = $facebook->getUser();
-			// echo $user;die;
+			// print_r($facebook);die;
 			if($user)
 			{
 				$model_user = new User;
 				
-				$check = $model_user->model()->find(array('condition'=>'facebook_id=:facebook_id','params'=>array('facebook_id'=>$user)));
+				$check = $model_user->model()->find(array('condition'=>'password=:password','params'=>array('password'=>$user)));
 				$accesstk = $facebook->getAccessToken();
 				$info = $facebook->api('/me');
 				Yii::app()->session['fusername'] = $info['name'];
 				Yii::app()->session['fid'] = $user;
+				// print_r($info) ;die;
 
 
 
 
 				if($check === null)
 				{
-					$model_user->facebook_id = $info['id'];
-					$model_user->facebook_name = $info['name'];
-					$model_user->facebook_link = $info['link'];
-					$model_user->access_token = $accesstk;
+					$model_user->username = $info['email'];
+					$model_user->password = $info['id'];
+					$model_user->name = $info['name'];
+					$model_user->user_Group='2';
 					$model_user->save();
 					$this->redirect(Yii::app()->homeUrl); 
 				} 
@@ -117,8 +106,8 @@ class AccountController extends Controller
 
         
 			        $criteria = new CDbCriteria();
-        			$criteria->condition = 'facebook_name=:facebook_name';
-        			$criteria->params = array('facebook_name'=>$info['name']);
+        			$criteria->condition = 'username=:username';
+        			$criteria->params = array('username'=>$info['email']);
         			$criteria->select = array('language');
         			$lang = User::model()->findAll($criteria);
         			foreach ($lang as $language => $value) {
@@ -139,3 +128,4 @@ class AccountController extends Controller
 
 		
 }
+

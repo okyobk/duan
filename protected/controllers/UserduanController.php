@@ -6,7 +6,7 @@ class UserduanController extends Controller
 	
 	public function actionUserduan()
 	{
-		$model=new Userduan;
+		$model=new User;
 
 
         $username = Yii::app()->request->getParam('username');
@@ -24,7 +24,7 @@ class UserduanController extends Controller
         $criteria->condition = 'username=:username';
         $criteria->params = array('username'=>$username);
         $criteria->select = array('language');
-        $lang = Userduan::model()->findAll($criteria);
+        $lang = User::model()->findAll($criteria);
         foreach ($lang as $language => $value) {
             $session['language'] = $value->language;
         }

@@ -12,7 +12,7 @@ foreach($list_photo as $photo)
 		 	$session->open();
 			if($session['fid']){
 					?>
-			<b><?php echo Yii::t('strings','user for website') ?>:</b>
+			<b><?php echo Yii::t('strings','user share') ?>:</b>
 			<form action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/account/share?image='?>" method="POST">
 			<input type="hidden" value="<?php echo $photo->id;?>" style="" name="id_image"/>	
 			<select name="namemember">
@@ -26,17 +26,7 @@ foreach($list_photo as $photo)
 			</form>
 			
 
-			<b><?php echo Yii::t('strings','user for facebook') ?>:</b>
-			<form action="<?php echo Yii::app()->getBaseUrl(true).'/index.php/account/share?image='?>" method="POST">
-			<input type="hidden" value="<?php echo $photo->id;?>" style="" name="id_image"/>	
-			<select name="namemember">
-			<?php foreach($list_member2 as $member ){ ?>
-			<option value="<?php echo $member['facebook_name']; ?>"><?php echo $member['facebook_name']; ?>
-			</option>	
-			<?php } ?>
-			</select>
-			<input type="submit" value="SHARE" style="height: 20px;width: 60px; margin-top: 5px;"/>		
-			</form>
+			
 			<?php
 			}
 }
